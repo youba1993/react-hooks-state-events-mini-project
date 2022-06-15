@@ -1,10 +1,19 @@
 import React from "react";
 
-function CategoryFilter() {
+function CategoryFilter({categories, handleCategory}) {
+
+  function hundleButton(e){
+      e.target.setAttribute("class","selected");
+      handleCategory(e.target.name);
+      }
   return (
     <div className="categories">
       <h5>Category filters</h5>
-      {/* render <button> elements for each category here */}
+      {categories.map((item, index)=> (
+        <button name={item} key={index} onClick={hundleButton}>{item}</button>
+      )
+      )}
+      
     </div>
   );
 }
